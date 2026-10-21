@@ -1,0 +1,303 @@
+/* ========================================== */
+/* 1. RESET CSS & PENGATURAN DASAR            */
+/* ========================================== */
+* {
+    /* Memastikan padding dan border dihitung dalam total lebar/tinggi elemen */
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa; /* Warna latar belakang abu-abu terang yang bersih */
+    color: #333; /* Warna teks utama agar nyaman dibaca */
+    line-height: 1.5;
+}
+
+/* ========================================== */
+/* 2. BAGIAN HEADER / BANNER KAFE             */
+/* ========================================== */
+.header {
+    background-color: #4a3b32; /* Warna cokelat kopi yang hangat */
+    color: #ffffff;
+    text-align: center;
+    padding: 25px 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.header p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* ========================================== */
+/* 3. TATA LETAK UTAMA (MAIN CONTAINER)       */
+/* ========================================== */
+.main-container {
+    display: flex;
+    max-width: 1200px; /* Batas lebar maksimal di layar komputer */
+    margin: 20px auto;
+    padding: 0 15px;
+    gap: 20px; /* Jarak antara katalog menu dan keranjang belanja */
+}
+
+/* Bagian katalog menu mengambil porsi lebih besar (2/3 dari lebar) */
+.menu-section {
+    flex: 2;
+}
+
+/* Bagian keranjang belanja mengambil porsi lebih kecil (1/3 dari lebar) */
+.cart-section {
+    flex: 1;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    height: fit-content;
+    
+    /* Membuat keranjang tetap menempel di layar saat halaman di-scroll (layar komputer) */
+    position: sticky;
+    top: 20px;
+}
+
+/* ========================================== */
+/* 4. NAVIGASI KATEGORI (TOMBOL FILTER)       */
+/* ========================================== */
+.kategori-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    
+    /* Jika tombol melebihi lebar layar HP, pengguna dapat menggesernya kesamping (scroll horizontal) */
+    overflow-x: auto;
+    padding-bottom: 5px;
+}
+
+.btn-kategori {
+    background-color: #e9ecef;
+    color: #495057;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    white-space: nowrap; /* Mencegah teks tombol terlipat menjadi 2 baris */
+    transition: all 0.2s ease-in-out;
+}
+
+/* Efek visual saat tombol kategori diklik/aktif atau disorot kursor */
+.btn-kategori.active, 
+.btn-kategori:hover {
+    background-color: #4a3b32;
+    color: #ffffff;
+}
+
+/* ========================================== */
+/* 5. GRID KATALOG MENU & KARTU PRODUK        */
+/* ========================================== */
+.menu-grid {
+    display: grid;
+    /* Membuat kolom otomatis menyesuaikan ukuran layar (minimal lebar kartu 220px) */
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.menu-card {
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Efek sedikit terangkat saat kartu produk diisi arah kursor */
+.menu-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.menu-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover; /* Mencegah gambar menjadi terdistorsi/gepeng */
+}
+
+.menu-info {
+    padding: 12px;
+}
+
+.menu-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: #212529;
+}
+
+.menu-info p {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-bottom: 10px;
+}
+
+.menu-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 12px 12px;
+}
+
+.harga {
+    font-weight: bold;
+    color: #2b8a3e; /* Warna hijau khas untuk penanda harga */
+    font-size: 1rem;
+}
+
+.btn-tambah {
+    background-color: #4a3b32;
+    color: #ffffff;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.btn-tambah:hover {
+    background-color: #362b25;
+}
+
+/* ========================================== */
+/* 6. ELEMEN KERANJANG BELANJA & ISI ITEM     */
+/* ========================================== */
+.cart-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #f1f3f5;
+    padding-bottom: 8px;
+    color: #212529;
+}
+
+.cart-items {
+    max-height: 280px;
+    overflow-y: auto; /* Memberikan scrollbar vertikal jika item pesanan sangat banyak */
+    margin-bottom: 15px;
+    padding-right: 5px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #f1f3f5;
+}
+
+.cart-item-detail {
+    font-size: 0.9rem;
+}
+
+/* Tombol Pengatur Jumlah (+ dan -) */
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+}
+
+.cart-item-controls button {
+    background: #e9ecef;
+    border: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+    transition: background-color 0.2s;
+}
+
+.cart-item-controls button:hover {
+    background: #dee2e6;
+}
+
+.cart-footer {
+    border-top: 2px solid #f1f3f5;
+    padding-top: 12px;
+}
+
+.total-harga {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #212529;
+}
+
+.btn-kirim {
+    width: 100%;
+    background-color: #25d366; /* Warna khas WhatsApp */
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-kirim:hover {
+    background-color: #1ebc57;
+}
+
+.empty-cart {
+    color: #adb5bd;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* ========================================== */
+/* 7. MEDIA QUERY (RESPONSIF TAMPILAN HP)    */
+/* ========================================== */
+/* Aturan di bawah hanya berlaku jika lebar layar kurang dari 768px (perangkat HP/Tablet kecil) */
+@media (max-width: 767px) {
+    /* Mengubah tata letak dari 2 kolom berdampingan menjadi 1 kolom vertikal */
+    .main-container {
+        flex-direction: column;
+    }
+
+    /* Menyesuaikan grid katalog menu agar muat 2 produk per baris di layar HP */
+    .menu-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 10px;
+    }
+
+    .menu-card img {
+        height: 110px;
+    }
+
+    .menu-info h3 {
+        font-size: 0.95rem;
+    }
+
+    .menu-info p {
+        font-size: 0.75rem;
+    }
+
+    /* Mengubah keranjang belanja agar tampil di bagian paling bawah */
+    .cart-section {
+        position: static;
+        margin-top: 10px;
+    }
+}
