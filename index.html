@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <!-- Pengaturan karakter dasar agar mendukung seluruh teks/simbol -->
+    <meta charset="UTF-8">
+    
+    <!-- Meta Viewport: Sangat penting agar tampilan responsif dan pas saat dibuka di HP maupun Laptop -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Judul yang akan muncul di tab browser -->
+    <title>Menu Digital Kafe - Kopi KITA</title>
+    
+    <!-- Menghubungkan file HTML ini dengan file styling CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ========================================== -->
+    <!-- 1. BAGIAN HEADER / BANNER KAFE             -->
+    <!-- ========================================== -->
+    <header class="header">
+        <h1>☕ Kopi KITA</h1>
+        <p>Silakan pilih menu favorit Anda langsung dari meja!</p>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- 2. WADAH UTAMA (MAIN CONTAINER)            -->
+    <!-- Menggunakan Flexbox di CSS:                -->
+    <!-- - Layar HP: Tampil 1 kolom lurus ke bawah  -->
+    <!-- - Layar Laptop: Tampil 2 kolom berdampingan -->
+    <!-- ========================================== -->
+    <div class="main-container">
+        
+        <!-- ====================================== -->
+        <!-- BAGIAN KIRI: FILTER & KATALOG MENU     -->
+        <!-- ====================================== -->
+        <section class="menu-section">
+            
+            <!-- Navigasi Kategori (Tombol Filter) -->
+            <!-- Setiap tombol memanggil fungsi filterKategori() di JavaScript saat diklik -->
+            <div class="kategori-container">
+                <button class="btn-kategori active" onclick="filterKategori('semua')">Semua</button>
+                <button class="btn-kategori" onclick="filterKategori('makanan')">Makanan</button>
+                <button class="btn-kategori" onclick="filterKategori('minuman')">Minuman</button>
+                <button class="btn-kategori" onclick="filterKategori('camilan')">Camilan</button>
+            </div>
+
+            <!-- Area Grid Katalog Menu -->
+            <!-- Wadah kosong ini akan diisi secara otomatis oleh JavaScript (script.js) -->
+            <!-- berdasarkan data menu tanpa menggunakan database server -->
+            <div class="menu-grid" id="menuGrid">
+                <!-- Kartu produk akan dirender di sini via JS -->
+            </div>
+            
+        </section>
+
+        <!-- ====================================== -->
+        <!-- BAGIAN KANAN: KERANJANG BELANJA        -->
+        <!-- ====================================== -->
+        <section class="cart-section" id="cartSection">
+            <h2>🛒 Ringkasan Pesanan</h2>
+            
+            <!-- Tempat daftar pesanan yang dipilih pelanggan -->
+            <!-- Akan diperbarui secara dinamis oleh JavaScript -->
+            <div class="cart-items" id="cartItems">
+                <p class="empty-cart">Keranjang masih kosong.</p>
+            </div>
+            
+            <!-- Bagian Bawah Keranjang: Total Harga & Tombol Kirim -->
+            <div class="cart-footer">
+                <div class="total-harga">
+                    <span>Total Pembayaran:</span>
+                    <strong id="totalHarga">Rp 0</strong>
+                </div>
+                
+                <!-- Tombol ini memanggil fungsi kirimPesananWA() di JavaScript -->
+                <!-- untuk mengirim rincian pesanan langsung ke WhatsApp kasir -->
+                <button class="btn-kirim" onclick="kirimPesananWA()">
+                    📲 Kirim Pesanan via WhatsApp
+                </button>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 3. MENGHUBUNGKAN FILE JAVASCRIPT          -->
+    <!-- Diletakkan di paling bawah body agar seluruh HTML  -->
+    <!-- dimuat terlebih dahulu sebelum skrip dijalankan   -->
+    <!-- ========================================== -->
+    <script src="script.js"></script>
+    
+</body>
+</html>
