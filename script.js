@@ -45,13 +45,7 @@ const menuData = [
         gambar: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=300" 
     },
     { 
-        id: 6, 
-        nama: "Roti Bakar Cokelat", 
-        kategori: "camilan", 
-        harga: 15000, 
-        desc: "Roti bakar lembut dengan isian cokelat lumer.", 
-        gambar: "https://images.unsplash.com/photo-1584776296944-ab6fb57b0bff?w=300" 
-    }
+        
 ];
 
 /* ========================================== */
